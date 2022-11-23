@@ -6,7 +6,7 @@ const APP_KEY = "ko9sm0h2o0yqjik"
 const APP_SECRET = "hfw0dv9247e96x1"
 
 const dbx = new Dropbox({
-  accessToken: "sl.BTmh6yUFz7xUZbQgkLM2tjtJPlL4CN1_Lk1E7yBbBjvuGSpx7W4rScv_2ksJE1fwfk8NfeLBGvh4w31h9outLn8SOW4heRd_AcsbhkCEdVp7GIyKDrFewpwpnnJi9mXWn27tPMAsznVF",
+  accessToken: "sl.BTnvVp1XNuYPXsDI4YKBytYt8hwDA13w6pb3If05q9EaOn3w_2g2M-4piO2EBsF9G0OMvvJwC88WoPj2Nbxc8Z_qnDBdyRfHDzlUj5tXUym8tCxnw27W-8rbU8AlC0exyeBnrkWvBqlP",
   fetch
 })
 
@@ -52,38 +52,35 @@ const init = async () => {
     loadingElem.classList.add('hidden')
   }
 
-  createFolderButton.addEventListener('submit', async () => {
+  createFolderButton.addEventListener('click', async () => {
     const path = createFolderPath.value
     console.log(`${state.rootPath === '' ? '' : `/${state.rootPath}`}/${path}`)
     const res = await dbx.filesCreateFolderV2({ autorename: false, path: `${state.rootPath === '' ? '' : `/${state.rootPath}`}/${path}` })
+    init()
   })
 
-  uploadForm.addEventListener('submit', async e => {
+  uploadForm.addEventListener('submit', (e) => {
     e.preventDefault()
+    const filePath = file.files[0]
 
-    const filePath = file.value
-    console.log(filePath)
+    let reader = new FileReader()
+    let content = reader.readAsText(filePath, "UTF-8")
 
-    const xhr = new XMLHttpRequest()
+    reader.onload = async function (e) {
+      const content = e.target.result
+      console.log(content)
 
+      const response = await dbx.filesUpload({
+        contents: content,
+        path: `/${filePath.name}`,
+        mode: "add",
+        autorename: true,
+        mute: false,
+        strict_conflict: false
+      })
+    }
 
-
-    // file.addEventListener('change', e => {
-    //   const files = e.target.files
-    //   const f = files[0]
-
-    //   let reader = new FileReader()
-    //   console.log(reader.readAsBinaryString(f))
-
-    // })
-
-    // const res = await dbx.filesUpload({
-    //   autorename: false,
-    //   mode: "add",
-    //   mute: false,
-    //   path: `${state.rootPath === '' ? '' : `/${state.rootPath}`}/${path}/${files}`,
-    // })
-
+    console.log(content)
   })
 }
 
