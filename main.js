@@ -6,11 +6,9 @@ const APP_KEY = "ko9sm0h2o0yqjik"
 const APP_SECRET = "hfw0dv9247e96x1"
 
 const dbx = new Dropbox({
-  accessToken: "sl.BTk5epbAjc1G7IE8gqtfvtN7SjnNPcEJ86LJJ1wQSLyknroupWvqNO_uHYNmuDla8Fp0yByy4YttPX-VPTtVkCHClFZakY3ZnHKuKxrQxwtA47ktoH5HFX9S2FEA0HCi-IHaL7ZSJ6_r",
+  accessToken: "sl.BTmh6yUFz7xUZbQgkLM2tjtJPlL4CN1_Lk1E7yBbBjvuGSpx7W4rScv_2ksJE1fwfk8NfeLBGvh4w31h9outLn8SOW4heRd_AcsbhkCEdVp7GIyKDrFewpwpnnJi9mXWn27tPMAsznVF",
   fetch
 })
-
-
 
 const state = {
   files: [],
@@ -62,10 +60,23 @@ const init = async () => {
 
   uploadForm.addEventListener('submit', async e => {
     e.preventDefault()
-    const files = file.value
-    console.log(files)
 
-    // fs.readFile(files
+    const filePath = file.value
+    console.log(filePath)
+
+    const xhr = new XMLHttpRequest()
+
+
+
+    // file.addEventListener('change', e => {
+    //   const files = e.target.files
+    //   const f = files[0]
+
+    //   let reader = new FileReader()
+    //   console.log(reader.readAsBinaryString(f))
+
+    // })
+
     // const res = await dbx.filesUpload({
     //   autorename: false,
     //   mode: "add",
