@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "vite --config vite.config.js",
+    "start": "vite --config vite.config.js --host",
     "build": "vite build",
     "preview": "vite preview"
   },

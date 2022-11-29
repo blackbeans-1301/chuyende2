@@ -6,7 +6,7 @@ const APP_KEY = "ko9sm0h2o0yqjik"
 const APP_SECRET = "hfw0dv9247e96x1"
 
 const dbx = new Dropbox({
-  accessToken: "sl.BTnvVp1XNuYPXsDI4YKBytYt8hwDA13w6pb3If05q9EaOn3w_2g2M-4piO2EBsF9G0OMvvJwC88WoPj2Nbxc8Z_qnDBdyRfHDzlUj5tXUym8tCxnw27W-8rbU8AlC0exyeBnrkWvBqlP",
+  accessToken: "sl.BT80edhDyZmRb4ad-0dkevAKmn3MvNd5dP3doSPLLq4R7KWtycMpmnlHgNAfnIJkdfoBpprdYBvbFzb7RVI3svSMuwkB2QZZEeTx5J_MX5VBV2HRZJeZQ5PTbVmhRcWLUx-mJcUeISyg",
   fetch
 })
 
